@@ -23,12 +23,16 @@ public class Channel implements Subject{
 
     @Override
     public void subscribe(Observer observer) {
-        this.subscribers.add(observer);
+        if ((observer != null) && !(subscribers.contains(observer))) {
+            this.subscribers.add(observer);
+        }
     }
 
     @Override
     public void unsubscribe(Observer observer) {
-        this.subscribers.remove(observer);
+        if ((observer != null) && (subscribers.contains(observer))) {
+            this.subscribers.remove(observer);
+        }
     }
 
     @Override

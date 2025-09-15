@@ -43,7 +43,7 @@ public class ChannelService {
 
     public boolean unsubscribe(String channelName, Observer user) {
         Optional<Channel> channel = getChannel(channelName);
-        if (channel.isPresent()) {
+        if (channel.isPresent() &&  user != null) {
             channel.get().unsubscribe(user);
             return true;
         }

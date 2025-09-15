@@ -34,12 +34,11 @@ public class ChannelService {
 
     public boolean subscribe(String channelName, Observer user) {
         Optional<Channel> channel = getChannel(channelName);
-        if (channel.isPresent()) {
+        if (channel.isPresent() && user != null) {
             channel.get().subscribe(user);
             return true;
         }
         return false;
-
     }
 
     public boolean unsubscribe(String channelName, Observer user) {
@@ -58,7 +57,6 @@ public class ChannelService {
             return true;
         }
         return false;
-
     }
 
     public Set<String> listChannels() {
